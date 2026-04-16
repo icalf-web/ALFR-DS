@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉVOR | Hidden Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #8B0000;
+            --bright-red: #FF0000;
+            --black: #050505;
+            --white: #ffffff;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Helvetica Neue', Helvetica, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- THE DYNAMIC REVEAL LAYER --- */
+        #flashlight {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: radial-gradient(
+                circle 250px at var(--x) var(--y), 
+                rgba(139, 0, 0, 0.15) 0%, 
+                transparent 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 40px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo { 
+            font-size: 22px; 
+            letter-spacing: 12px; 
+            font-weight: 200; 
+            transition: color 0.5s ease;
+        }
+
+        .nav-links { 
+            font-size: 10px; 
+            letter-spacing: 4px; 
+            opacity: 0.4; 
+            transition: opacity 0.5s;
+        }
+
+        /* --- KINETIC CURSOR --- */
+        #cursor {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--bright-red);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10001;
+            transition: width 0.4s var(--ease), height 0.4s var(--ease), background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0px;
+            color: white;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            line-height: 0.9;
+            z-index: 2;
+        }
+
+        /* --- PRODUCT GALLERY --- */
+        .section { padding: 100px 5%; position: relative; z-index: 2; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 150px 80px;
+        }
+
+        .product-item { position: relative; }
+        .product-item:nth-child(even) { margin-top: 200px; }
+
+        .img-wrap {
+            width: 100%;
+            height: 650px;
+            background: #0d0d0d;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.02);
+            transition: border 0.6s var(--ease);
+        }
+
+        .img-wrap img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+            transition: transform 1.2s var(--ease), filter 0.6s ease;
+            filter: grayscale(0.5) brightness(0.7);
+        }
+
+        .product-item:hover .img-wrap { border-color: var(--red); }
+        .product-item:hover img { filter: grayscale(0) brightness(1); transform: scale(1.05); }
+
+        .item-info {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .item-info span { color: var(--red); font-weight: bold; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            #cursor, #flashlight { display: none; }
+            .product-grid { grid-template-columns: 1fr; gap: 80px; }
+            .product-item:nth-child(even) { margin-top: 0; }
+            .img-wrap { height: 450px; }
+            nav { padding: 25px; }
+            .logo { font-size: 16px; letter-spacing: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="flashlight"></div>
+
+    <nav>
+        <div class="logo">ALFRÉDS</div>
+        <div class="nav-links">COLLECTIONS • ARCHIVE</div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">Shadows <br> of Red</h1>
+            <p style="letter-spacing: 12px; font-size: 10px; opacity: 0.3; margin-top: 20px;">ESSENCE OF THE UNSEEN</p>
+        </section>
+
+        <section class="section">
+            <div class="product-grid">
+                
+                <div class="product-item interactive">
+                    <div class="img-wrap">
+                        <img src="https://cdn.dribbble.com/userupload/14477751/file/original-9f2efeb7fdb4cff632405b4c8072a6c3.png?resize=752x" alt="">
+                    </div>
+                    <div class="item-info"><h3>N° 01 Santal</h3><span>$240</span></div>
+                </div>
+
+                <div class="product-item interactive">
+                    <div class="img-wrap">
+                        <img src="https://cdn.dribbble.com/userupload/13267425/file/original-b6e5fe7ba06c3e5d8d526e39dbdd7a80.png?resize=752x" alt="">
+                    </div>
+                    <div class="item-info"><h3>N° 02 Velours</h3><span>$190</span></div>
+                </div>
+
+                <div class="product-item interactive">
+                    <div class="img-wrap">
+                        <img src="https://cdn.dribbble.com/userupload/8391459/file/original-48cac25ef3c5996c919d1f3b70872406.png?resize=752x" alt="">
+                    </div>
+                    <div class="item-info"><h3>N° 03 Oud</h3><span>$210</span></div>
+                </div>
+
+                <div class="product-item interactive">
+                    <div class="img-wrap">
+                        <img src="https://cdn.dribbble.com/userupload/14477751/file/original-9f2efeb7fdb4cff632405b4c8072a6c3.png?resize=752x&vertical=center" style="filter: hue-rotate(300deg);" alt="">
+                    </div>
+                    <div class="item-info"><h3>N° 04 Brûlé</h3><span>$280</span></div>
+                </div>
+
+                <div class="product-item interactive">
+                    <div class="img-wrap">
+                        <img src="https://cdn.dribbble.com/userupload/13267425/file/original-b6e5fe7ba06c3e5d8d526e39dbdd7a80.png?resize=752x&vertical=center" style="filter: brightness(0.6) sepia(0.5) hue-rotate(-20deg);" alt="">
+                    </div>
+                    <div class="item-info"><h3>N° 05 Ombre</h3><span>$225</span></div>
+                </div>
+
+                <div class="product-item interactive">
+                    <div class="img-wrap">
+                        <img src="https://cdn.dribbble.com/userupload/8391459/file/original-48cac25ef3c5996c919d1f3b70872406.png?resize=752x&vertical=center" style="filter: saturate(3) hue-rotate(-40deg);" alt="">
+                    </div>
+                    <div class="item-info"><h3>N° 06 Vecteur</h3><span>$310</span></div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 100px; text-align: center; border-top: 1px solid rgba(255,255,255,0.03);">
+        <p style="letter-spacing: 15px; font-size: 9px; opacity: 0.2;">THE HOUSE OF ALFRÉDS</p>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const flashlight = document.getElementById('flashlight');
+        const root = document.documentElement;
+
+        let mX = 0, mY = 0;
+        let cX = 0, cY = 0;
+
+        // 1. Mouse Tracking for Flashlight and Cursor
+        document.addEventListener('mousemove', (e) => {
+            mX = e.clientX;
+            mY = e.clientY;
+            
+            // Set CSS variables for the Flashlight background effect
+            root.style.setProperty('--x', mX + 'px');
+            root.style.setProperty('--y', mY + 'px');
+        });
+
+        // 2. Smooth Cursor Following (Inertia)
+        function animate() {
+            cX += (mX - cX) * 0.15;
+            cY += (mY - cY) * 0.15;
+            cursor.style.transform = `translate(${cX}px, ${cY}px)`;
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // 3. Hover Interaction Logic
+        document.querySelectorAll('.interactive').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '80px';
+                cursor.style.height = '80px';
+                cursor.style.background = 'rgba(255, 255, 255, 0.1)';
+                cursor.style.backdropFilter = 'blur(5px)';
+                cursor.style.border = '1px solid var(--red)';
+                cursor.style.fontSize = '10px';
+                cursor.innerText = 'DISCOVER';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '8px';
+                cursor.style.height = '8px';
+                cursor.style.background = 'var(--bright-red)';
+                cursor.style.backdropFilter = 'none';
+                cursor.style.border = 'none';
+                cursor.innerText = '';
+            });
+        });
+
+        // 4. Parallax Image Scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.querySelectorAll('.img-wrap img').forEach((img, i) => {
+                const shift = (i % 2 === 0) ? 0.04 : -0.04;
+                img.style.transform = `translateY(${scrolled * shift}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
