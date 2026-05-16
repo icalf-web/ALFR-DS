@@ -3,283 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DÉVOR | Hidden Luxury</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    <title>ALFRÉDS | Urban Dew</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --red: #8B0000;
-            --bright-red: #FF0000;
-            --black: #050505;
+            --gold: #c5a059;
+            --gold-dark: #a38242;
+            --black: #0a0a0a;
             --white: #ffffff;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --cream: #faf9f5;
+            --ease: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+        /* --- GLOBAL & RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
 
         body {
             background-color: var(--black);
             color: var(--white);
-            font-family: 'Helvetica Neue', Helvetica, sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- THE DYNAMIC REVEAL LAYER --- */
-        #flashlight {
+        ::selection { background: var(--gold); color: var(--white); }
+
+        /* --- KINETIC LUXURY CURSOR --- */
+        #cursor {
             position: fixed;
             top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: radial-gradient(
-                circle 250px at var(--x) var(--y), 
-                rgba(139, 0, 0, 0.15) 0%, 
-                transparent 100%
-            );
-            z-index: 1;
+            width: 12px; height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
             pointer-events: none;
+            z-index: 10000;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s var(--ease), height 0.3s var(--ease), background-color 0.3s;
         }
 
         /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
-            padding: 40px 5%;
+            padding: 35px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
+            z-index: 100;
+            mix-blend-mode: difference; /* Ensures visibility on light and dark backgrounds */
         }
 
-        .logo { 
-            font-size: 22px; 
-            letter-spacing: 12px; 
-            font-weight: 200; 
-            transition: color 0.5s ease;
+        .nav-brand {
+            font-size: 14px;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: var(--white);
         }
 
-        .nav-links { 
-            font-size: 10px; 
-            letter-spacing: 4px; 
-            opacity: 0.4; 
-            transition: opacity 0.5s;
-        }
-
-        /* --- KINETIC CURSOR --- */
-        #cursor {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: var(--bright-red);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10001;
-            transition: width 0.4s var(--ease), height 0.4s var(--ease), background 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0px;
-            color: white;
-        }
-
-        /* --- HERO --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 12vw, 8rem);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            line-height: 0.9;
-            z-index: 2;
-        }
-
-        /* --- PRODUCT GALLERY --- */
-        .section { padding: 100px 5%; position: relative; z-index: 2; }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 150px 80px;
-        }
-
-        .product-item { position: relative; }
-        .product-item:nth-child(even) { margin-top: 200px; }
-
-        .img-wrap {
-            width: 100%;
-            height: 650px;
-            background: #0d0d0d;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.02);
-            transition: border 0.6s var(--ease);
-        }
-
-        .img-wrap img {
-            width: 85%;
-            height: 85%;
-            object-fit: contain;
-            transition: transform 1.2s var(--ease), filter 0.6s ease;
-            filter: grayscale(0.5) brightness(0.7);
-        }
-
-        .product-item:hover .img-wrap { border-color: var(--red); }
-        .product-item:hover img { filter: grayscale(0) brightness(1); transform: scale(1.05); }
-
-        .item-info {
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            letter-spacing: 3px;
+        .nav-links {
+            font-size: 10px;
+            letter-spacing: 5px;
             text-transform: uppercase;
         }
 
-        .item-info span { color: var(--red); font-weight: bold; }
+        /* --- HERO SECTION (VIDEO OVERLAY) --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-        /* --- MOBILE --- */
+        .hero-video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            filter: brightness(0.6) contrast(1.1);
+            transform: scale(1.05); /* Avoids edge bleeding */
+        }
+
+        .hero-vignette {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: elegantFade 3s var(--ease) forwards;
+        }
+
+        .main-logo {
+            width: clamp(250px, 40vw, 450px);
+            margin-bottom: 30px;
+            /* If your img.png has a white background, use mix-blend-mode: multiply. 
+               If it is transparent, drop-shadow is perfect. */
+            filter: drop-shadow(0px 10px 30px rgba(0,0,0,0.5)); 
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            font-size: 9px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--white);
+            opacity: 0.6;
+            animation: pulse 2s infinite;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: var(--gold);
+            margin: 10px auto 0;
+        }
+
+        /* --- SHOWCASE SECTION (SCROLL REVEAL) --- */
+        .showcase {
+            background-color: var(--cream);
+            color: var(--black);
+            padding: 15vh 8%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 10%;
+            min-height: 100vh;
+        }
+
+        /* Text Side */
+        .showcase-text {
+            max-width: 500px;
+        }
+
+        .section-subtitle {
+            font-size: 11px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: var(--black);
+        }
+
+        .section-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #555;
+            margin-bottom: 50px;
+        }
+
+        /* Luxury Button */
+        .btn-buy {
+            display: inline-block;
+            padding: 18px 45px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--black);
+            border: 1px solid var(--black);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.4s var(--ease);
+        }
+
+        .btn-buy::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--gold);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s var(--ease);
+            z-index: -1;
+        }
+
+        /* Image Side */
+        .showcase-image-container {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        /* --- ANIMATION CLASSES (Triggered via JS) --- */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        @keyframes elegantFade {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(5px); }
+            100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 900px) {
-            #cursor, #flashlight { display: none; }
-            .product-grid { grid-template-columns: 1fr; gap: 80px; }
-            .product-item:nth-child(even) { margin-top: 0; }
-            .img-wrap { height: 450px; }
-            nav { padding: 25px; }
-            .logo { font-size: 16px; letter-spacing: 6px; }
+            .showcase {
+                grid-template-columns: 1fr;
+                padding: 10vh 5%;
+                text-align: center;
+            }
+            .showcase-text { margin: 0 auto 50px auto; }
+            .showcase-image-container { height: 60vh; }
+            #cursor { display: none; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
     <div id="cursor"></div>
-    <div id="flashlight"></div>
 
     <nav>
-        <div class="logo">ALFRÉDS</div>
-        <div class="nav-links">COLLECTIONS • ARCHIVE</div>
+        <div class="nav-brand">Alfréds</div>
+        <div class="nav-links">The Collection</div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <h1 class="hero-title">Shadows <br> of Red</h1>
-            <p style="letter-spacing: 12px; font-size: 10px; opacity: 0.3; margin-top: 20px;">ESSENCE OF THE UNSEEN</p>
-        </section>
+    <header class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="yep.mp4" type="video/mp4">
+        </video>
+        <div class="hero-vignette"></div>
+        
+        <div class="hero-content">
+            <img src="img.png" alt="ALFREDS Logo" class="main-logo">
+        </div>
 
-        <section class="section">
-            <div class="product-grid">
-                
-                <div class="product-item interactive">
-                    <div class="img-wrap">
-                        <img src="https://cdn.dribbble.com/userupload/14477751/file/original-9f2efeb7fdb4cff632405b4c8072a6c3.png?resize=752x" alt="">
-                    </div>
-                    <div class="item-info"><h3>N° 01 Santal</h3><span>$240</span></div>
-                </div>
+        <div class="scroll-indicator">
+            Discover
+            <div class="scroll-line"></div>
+        </div>
+    </header>
 
-                <div class="product-item interactive">
-                    <div class="img-wrap">
-                        <img src="https://cdn.dribbble.com/userupload/13267425/file/original-b6e5fe7ba06c3e5d8d526e39dbdd7a80.png?resize=752x" alt="">
-                    </div>
-                    <div class="item-info"><h3>N° 02 Velours</h3><span>$190</span></div>
-                </div>
-
-                <div class="product-item interactive">
-                    <div class="img-wrap">
-                        <img src="https://cdn.dribbble.com/userupload/8391459/file/original-48cac25ef3c5996c919d1f3b70872406.png?resize=752x" alt="">
-                    </div>
-                    <div class="item-info"><h3>N° 03 Oud</h3><span>$210</span></div>
-                </div>
-
-                <div class="product-item interactive">
-                    <div class="img-wrap">
-                        <img src="https://cdn.dribbble.com/userupload/14477751/file/original-9f2efeb7fdb4cff632405b4c8072a6c3.png?resize=752x&vertical=center" style="filter: hue-rotate(300deg);" alt="">
-                    </div>
-                    <div class="item-info"><h3>N° 04 Brûlé</h3><span>$280</span></div>
-                </div>
-
-                <div class="product-item interactive">
-                    <div class="img-wrap">
-                        <img src="https://cdn.dribbble.com/userupload/13267425/file/original-b6e5fe7ba06c3e5d8d526e39dbdd7a80.png?resize=752x&vertical=center" style="filter: brightness(0.6) sepia(0.5) hue-rotate(-20deg);" alt="">
-                    </div>
-                    <div class="item-info"><h3>N° 05 Ombre</h3><span>$225</span></div>
-                </div>
-
-                <div class="product-item interactive">
-                    <div class="img-wrap">
-                        <img src="https://cdn.dribbble.com/userupload/8391459/file/original-48cac25ef3c5996c919d1f3b70872406.png?resize=752x&vertical=center" style="filter: saturate(3) hue-rotate(-40deg);" alt="">
-                    </div>
-                    <div class="item-info"><h3>N° 06 Vecteur</h3><span>$310</span></div>
-                </div>
-
+    <section class="showcase">
+        <div class="showcase-text">
+            <span class="section-subtitle reveal-up">The Signature Blend</span>
+            <h2 class="section-title reveal-up delay-1">Urban Dew</h2>
+            <p class="section-desc reveal-up delay-1">
+                A masterpiece of olfactory art. Encased in exquisite glass, Urban Dew captures the unseen essence of high-society elegance. With notes of rare botanicals and liquid gold, it is not just a fragrance—it is an inheritance.
+            </p>
+            <div class="reveal-up delay-2">
+                <a href="#" class="btn-buy interactive-btn">Acquire Now — $340</a>
             </div>
-        </section>
-    </main>
-
-    <footer style="padding: 100px; text-align: center; border-top: 1px solid rgba(255,255,255,0.03);">
-        <p style="letter-spacing: 15px; font-size: 9px; opacity: 0.2;">THE HOUSE OF ALFRÉDS</p>
-    </footer>
+        </div>
+        
+        <div class="showcase-image-container reveal-up delay-2">
+            <img src="yes.png" alt="Urban Dew Perfume Bottle" class="product-image">
+        </div>
+    </section>
 
     <script>
+        // 1. Custom Kinetic Cursor Logic
         const cursor = document.getElementById('cursor');
-        const flashlight = document.getElementById('flashlight');
-        const root = document.documentElement;
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
 
-        let mX = 0, mY = 0;
-        let cX = 0, cY = 0;
-
-        // 1. Mouse Tracking for Flashlight and Cursor
         document.addEventListener('mousemove', (e) => {
-            mX = e.clientX;
-            mY = e.clientY;
-            
-            // Set CSS variables for the Flashlight background effect
-            root.style.setProperty('--x', mX + 'px');
-            root.style.setProperty('--y', mY + 'px');
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
 
-        // 2. Smooth Cursor Following (Inertia)
-        function animate() {
-            cX += (mX - cX) * 0.15;
-            cY += (mY - cY) * 0.15;
-            cursor.style.transform = `translate(${cX}px, ${cY}px)`;
-            requestAnimationFrame(animate);
+        // Smooth cursor follow
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.2;
+            cursorY += (mouseY - cursorY) * 0.2;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
         }
-        animate();
+        animateCursor();
 
-        // 3. Hover Interaction Logic
-        document.querySelectorAll('.interactive').forEach(el => {
+        // Cursor morph on hover over buttons
+        const interactives = document.querySelectorAll('.interactive-btn');
+        interactives.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                cursor.style.width = '80px';
-                cursor.style.height = '80px';
-                cursor.style.background = 'rgba(255, 255, 255, 0.1)';
-                cursor.style.backdropFilter = 'blur(5px)';
-                cursor.style.border = '1px solid var(--red)';
-                cursor.style.fontSize = '10px';
-                cursor.innerText = 'DISCOVER';
+                cursor.style.width = '60px';
+                cursor.style.height = '60px';
+                cursor.style.backgroundColor = 'transparent';
+                cursor.style.border = '1px solid var(--gold)';
+                // Fill button with gold effect
+                el.style.color = '#fff';
+                el.style.borderColor = 'var(--gold)';
+                el.style.setProperty('--pseudo-transform', 'scaleY(1)');
             });
+            
+            // Replicate CSS hover state via JS for the pseudo element
+            el.addEventListener('mousemove', () => {
+                 el.style.cssText = `color: #fff; border-color: var(--gold);`;
+                 const style = document.createElement('style');
+                 style.innerHTML = `.btn-buy:hover::before { transform: scaleY(1); }`;
+                 document.head.appendChild(style);
+            });
+
             el.addEventListener('mouseleave', () => {
-                cursor.style.width = '8px';
-                cursor.style.height = '8px';
-                cursor.style.background = 'var(--bright-red)';
-                cursor.style.backdropFilter = 'none';
+                cursor.style.width = '12px';
+                cursor.style.height = '12px';
+                cursor.style.backgroundColor = 'var(--gold)';
                 cursor.style.border = 'none';
-                cursor.innerText = '';
+                el.style.color = 'var(--black)';
+                el.style.borderColor = 'var(--black)';
             });
         });
 
-        // 4. Parallax Image Scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            document.querySelectorAll('.img-wrap img').forEach((img, i) => {
-                const shift = (i % 2 === 0) ? 0.04 : -0.04;
-                img.style.transform = `translateY(${scrolled * shift}px)`;
+        // 2. Intersection Observer for Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Triggers when 15% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
             });
+        }, observerOptions);
+
+        // Attach observer to all elements with .reveal-up class
+        document.querySelectorAll('.reveal-up').forEach((el) => {
+            observer.observe(el);
         });
     </script>
 </body>
