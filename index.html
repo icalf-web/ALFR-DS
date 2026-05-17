@@ -22,7 +22,6 @@
             --ease: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Speed Optimization: Background color while video loads */
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
 
         body {
@@ -58,7 +57,6 @@
         }
 
         .nav-brand { font-size: 14px; letter-spacing: 12px; text-transform: uppercase; font-weight: 300; }
-        .nav-links { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; }
 
         .hero {
             position: relative;
@@ -77,22 +75,13 @@
             width: 100%; height: 100%;
             object-fit: cover;
             z-index: 1;
-            filter: brightness(0.6) contrast(1.1);
-        }
-
-        .hero-vignette {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%);
-            z-index: 2;
+            filter: brightness(0.6);
         }
 
         .hero-content {
             position: relative;
             z-index: 3;
             text-align: center;
-            animation: elegantFade 3s var(--ease) forwards;
         }
 
         .main-logo {
@@ -100,20 +89,6 @@
             display: block;
             margin: 0 auto;
             mix-blend-mode: screen; 
-            filter: drop-shadow(0px 10px 30px rgba(0,0,0,0.5)); 
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            font-size: 9px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            opacity: 0.6;
-            animation: pulse 2s infinite;
         }
 
         .showcase {
@@ -127,37 +102,15 @@
             min-height: 100vh;
         }
 
-        .section-subtitle { font-size: 11px; letter-spacing: 8px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
-        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-style: italic; font-weight: 400; line-height: 1.1; margin-bottom: 30px; }
-        .section-desc { font-size: 14px; line-height: 1.8; font-weight: 300; color: #555; margin-bottom: 50px; }
-
-        .btn-buy {
-            display: inline-block;
-            padding: 18px 45px;
-            font-size: 10px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--black);
-            border: 1px solid var(--black);
-            text-decoration: none;
-            transition: all 0.4s var(--ease);
-        }
-
-        .btn-buy:hover { background: var(--black); color: var(--white); }
-
-        .product-image-box { position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.15); }
-        .product-image { width: 100%; height: auto; display: block; transition: transform 1.5s var(--ease); }
-
-        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1.2s var(--ease), transform 1.2s var(--ease); }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-style: italic; margin-bottom: 30px; }
+        .product-image { width: 100%; height: auto; display: block; }
+        
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s var(--ease); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @keyframes elegantFade { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        @keyframes pulse { 0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); } 50% { opacity: 1; transform: translateX(-50%) translateY(10px); } }
 
         @media (max-width: 900px) {
             .showcase { grid-template-columns: 1fr; text-align: center; }
             #cursor { display: none; }
-            .nav-links { display: none; }
         }
     </style>
 </head>
@@ -167,31 +120,24 @@
 
     <nav>
         <div class="nav-brand">ALFRÉDS</div>
-        <div class="nav-links">The Collection</div>
     </nav>
 
     <header class="hero">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="yep.mp4" type="video/mp4">
         </video>
-        <div class="hero-vignette"></div>
         <div class="hero-content">
             <img src="img.png" alt="ALFRÉDS Logo" class="main-logo">
         </div>
-        <div class="scroll-indicator">Discover</div>
     </header>
 
     <section class="showcase">
         <div class="showcase-text">
-            <span class="section-subtitle reveal">Signature Blend</span>
             <h2 class="section-title reveal">Urban Dew</h2>
-            <p class="section-desc reveal">
-                A masterpiece of olfactory art. Encased in exquisite glass, Urban Dew captures the unseen essence of high-society elegance. 
-            </p>
-            <a href="#" class="btn-buy reveal">Acquire Now</a>
+            <p class="reveal">A masterpiece of olfactory art.</p>
         </div>
-        <div class="product-image-box reveal">
-            <img src="yes.png" alt="Urban Dew Perfume" class="product-image">
+        <div class="reveal">
+            <img src="yes.png" alt="Urban Dew" class="product-image">
         </div>
     </section>
 
@@ -209,11 +155,10 @@
         animate();
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
+
 </body>
 </html>
