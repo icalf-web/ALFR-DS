@@ -6,45 +6,24 @@
 
     <title>ALFRÉDS | Urban Dew</title>
 
-    <!-- SEO -->
-    <meta name="description"
-        content="Discover ALFRÉDS — a luxury fragrance house crafting timeless perfumes with sophistication, elegance, and modern identity. Explore Urban Dew, our signature unisex fragrance.">
+    <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" />
 
-    <meta name="keywords"
-        content="Luxury perfume, ALFRÉDS perfume, Urban Dew, niche fragrance, premium perfume, unisex perfume, luxury scent, designer fragrance">
-
+    <meta name="description" content="Discover ALFRÉDS — a luxury fragrance house crafting timeless perfumes with sophistication, elegance, and modern identity. Explore Urban Dew, our signature unisex fragrance.">
+    <meta name="keywords" content="Luxury perfume, ALFRÉDS perfume, Urban Dew, niche fragrance, premium perfume, unisex perfume, luxury scent, designer fragrance">
     <meta name="author" content="ALFRÉDS">
 
-    <!-- OPEN GRAPH -->
     <meta property="og:title" content="ALFRÉDS | Luxury Fragrances">
-    <meta property="og:description"
-        content="Luxury fragrances crafted with timeless sophistication and modern elegance.">
-    <meta property="og:image" content="https://yourdomain.com/Favicon.png">
+    <meta property="og:description" content="Luxury fragrances crafted with timeless sophistication and modern elegance.">
+    <meta property="og:image" content="Favicon.png">
     <meta property="og:type" content="website">
 
-    <!-- TWITTER -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ALFRÉDS | Luxury Fragrances">
-    <meta name="twitter:description"
-        content="Luxury fragrances crafted with timeless sophistication and modern elegance.">
-    <meta name="twitter:image" content="https://yourdomain.com/Favicon.png">
+    <link rel="icon" type="image/png" href="Favicon.png">
+    <link rel="shortcut icon" href="Favicon.ico">
+    <link rel="apple-touch-icon" href="Favicon.png">
 
-    <!-- FAVICONS -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-<link rel="manifest" href="/site.webmanifest">
-
-<link rel="shortcut icon" href="/favicon.ico">
-
-   
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 
     <style>
-
         :root{
             --gold:#c7a768;
             --gold-dark:#9f7f46;
@@ -52,16 +31,10 @@
             --cream:#f7f4ee;
             --white:#ffffff;
             --glass:rgba(255,255,255,0.06);
-
             --ease:cubic-bezier(0.22,1,0.36,1);
         }
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            scroll-behavior:smooth;
-        }
+        *{ margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
 
         body{
             background:var(--black);
@@ -69,600 +42,219 @@
             font-family:'Inter',sans-serif;
             overflow-x:hidden;
             -webkit-font-smoothing:antialiased;
+            cursor: none !important; /* Added to ensure the custom cursor is the only one visible */
         }
 
-        body::-webkit-scrollbar{
-            width:8px;
-        }
+        body::-webkit-scrollbar{ width:8px; }
+        body::-webkit-scrollbar-thumb{ background:var(--gold); }
 
-        body::-webkit-scrollbar-thumb{
-            background:var(--gold);
-        }
+        a{ text-decoration:none; color:inherit; cursor: none !important; }
+        img{ max-width:100%; display:block; }
 
-        a{
-            text-decoration:none;
-            color:inherit;
-        }
-
-        img{
-            max-width:100%;
-            display:block;
-        }
-
-        section{
-            position:relative;
-        }
-
-       
         #cursor{
             position:fixed;
-            width:12px;
-            height:12px;
+            width:12px; height:12px;
             border-radius:50%;
             background:var(--gold);
             pointer-events:none;
             z-index:9999;
             mix-blend-mode:difference;
             transform:translate(-50%,-50%);
-            transition:
-                width .3s var(--ease),
-                height .3s var(--ease),
-                background .3s var(--ease),
-                border .3s var(--ease);
+            transition: width .3s var(--ease), height .3s var(--ease), background .3s var(--ease), border .3s var(--ease);
         }
 
-        @media(max-width:900px){
-            #cursor{
-                display:none;
-            }
-        }
-
-     
+        @media(max-width:900px){ #cursor{ display:none; } body { cursor: auto !important; } }
 
         nav{
             position:fixed;
-            top:0;
-            left:0;
-            width:100%;
+            top:0; left:0; width:100%;
             z-index:1000;
-
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-
+            display:flex; justify-content:space-between; align-items:center;
             padding:30px 5%;
-
             backdrop-filter:blur(10px);
             background:rgba(0,0,0,0.15);
             border-bottom:1px solid rgba(255,255,255,0.05);
         }
 
-        .nav-logo{
-            font-size:14px;
-            letter-spacing:12px;
-            text-transform:uppercase;
-            font-weight:300;
-        }
-
-        .nav-links{
-            display:flex;
-            gap:40px;
-            align-items:center;
-        }
-
-        .nav-links a{
-            font-size:11px;
-            letter-spacing:4px;
-            text-transform:uppercase;
-            position:relative;
-            opacity:0.85;
-            transition:.4s;
-        }
-
-        .nav-links a::after{
-            content:'';
-            position:absolute;
-            left:0;
-            bottom:-8px;
-            width:0%;
-            height:1px;
-            background:var(--gold);
-            transition:.4s;
-        }
-
-        .nav-links a:hover{
-            opacity:1;
-            color:var(--gold);
-        }
-
-        .nav-links a:hover::after{
-            width:100%;
-        }
-
-        @media(max-width:900px){
-
-            nav{
-                padding:25px 6%;
-            }
-
-            .nav-links{
-                display:none;
-            }
-        }
-
-       
+        .nav-logo{ font-size:14px; letter-spacing:12px; text-transform:uppercase; font-weight:300; }
+        .nav-links{ display:flex; gap:40px; align-items:center; }
+        .nav-links a{ font-size:11px; letter-spacing:4px; text-transform:uppercase; position:relative; opacity:0.85; transition:.4s; }
+        .nav-links a:hover{ opacity:1; color:var(--gold); }
 
         .hero{
-            height:100vh;
-            position:relative;
-            overflow:hidden;
-
-            display:flex;
-            justify-content:center;
-            align-items:center;
+            height:100vh; position:relative; overflow:hidden;
+            display:flex; justify-content:center; align-items:center;
         }
 
         .hero video{
-            position:absolute;
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            filter:brightness(.45);
-            transform:scale(1.05);
+            position:absolute; width:100%; height:100%;
+            object-fit:cover; filter:brightness(.45); transform:scale(1.05);
         }
 
         .hero-overlay{
-            position:absolute;
-            inset:0;
-            background:
-                radial-gradient(circle at center,
-                transparent 10%,
-                rgba(0,0,0,0.82) 100%);
+            position:absolute; inset:0;
+            background: radial-gradient(circle at center, transparent 10%, rgba(0,0,0,0.82) 100%);
         }
 
-        .hero-content{
-            position:relative;
-            z-index:10;
-            text-align:center;
-            animation:fadeIn 2s var(--ease);
-        }
+        .hero-content{ position:relative; z-index:10; text-align:center; animation:fadeIn 2s var(--ease); }
+        .main-logo{ width:min(420px,70vw); margin:auto; filter:drop-shadow(0px 10px 30px rgba(0,0,0,0.6)); }
+        .hero-tagline{ margin-top:30px; font-size:12px; letter-spacing:7px; text-transform:uppercase; color:rgba(255,255,255,0.75); }
 
-        .main-logo{
-            width:min(420px,70vw);
-            margin:auto;
-            filter:drop-shadow(0px 10px 30px rgba(0,0,0,0.6));
-        }
+        .scroll-indicator{ position:absolute; bottom:40px; left:50%; transform:translateX(-50%); z-index:20; text-align:center; }
+        .scroll-indicator span{ font-size:10px; letter-spacing:5px; text-transform:uppercase; opacity:0.6; }
+        .scroll-line{ width:1px; height:50px; background:var(--gold); margin:12px auto 0; animation:scrollLine 2s infinite; }
 
-        .hero-tagline{
-            margin-top:30px;
-
-            font-size:12px;
-            letter-spacing:7px;
-            text-transform:uppercase;
-            color:rgba(255,255,255,0.75);
-        }
-
-        .scroll-indicator{
-            position:absolute;
-            bottom:40px;
-            left:50%;
-            transform:translateX(-50%);
-            z-index:20;
-            text-align:center;
-        }
-
-        .scroll-indicator span{
-            font-size:10px;
-            letter-spacing:5px;
-            text-transform:uppercase;
-            opacity:0.6;
-        }
-
-        .scroll-line{
-            width:1px;
-            height:50px;
-            background:var(--gold);
-            margin:12px auto 0;
-            animation:scrollLine 2s infinite;
-        }
-
-      
         .showcase{
-            min-height:100vh;
-            background:var(--cream);
-            color:#111;
-
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:8%;
-
-            align-items:center;
-
-            padding:120px 8%;
+            min-height:100vh; background:var(--cream); color:#111;
+            display:grid; grid-template-columns:1fr 1fr; gap:8%;
+            align-items:center; padding:120px 8%;
         }
 
-        .section-subtitle{
-            color:var(--gold-dark);
-            font-size:11px;
-            letter-spacing:7px;
-            text-transform:uppercase;
-            margin-bottom:25px;
-            display:block;
-        }
-
-        .section-title{
-            font-family:'Playfair Display',serif;
-            font-size:clamp(3rem,6vw,5rem);
-            line-height:1;
-            font-weight:500;
-            margin-bottom:30px;
-        }
-
-        .section-desc{
-            line-height:1.9;
-            font-size:15px;
-            color:#555;
-            margin-bottom:50px;
-            max-width:550px;
-        }
+        .section-subtitle{ color:var(--gold-dark); font-size:11px; letter-spacing:7px; text-transform:uppercase; margin-bottom:25px; display:block; }
+        .section-title{ font-family:'Playfair Display',serif; font-size:clamp(3rem,6vw,5rem); line-height:1; font-weight:500; margin-bottom:30px; }
+        .section-desc{ line-height:1.9; font-size:15px; color:#555; margin-bottom:50px; max-width:550px; }
 
         .luxury-btn{
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-
-            padding:18px 42px;
-
-            border:1px solid #111;
-            color:#111;
-
-            font-size:11px;
-            letter-spacing:4px;
-            text-transform:uppercase;
-
-            position:relative;
-            overflow:hidden;
-
-            transition:.5s var(--ease);
+            display:inline-flex; align-items:center; justify-content:center;
+            padding:18px 42px; border:1px solid #111; color:#111;
+            font-size:11px; letter-spacing:4px; text-transform:uppercase;
+            position:relative; overflow:hidden; transition:.5s var(--ease); z-index: 1;
         }
 
         .luxury-btn::before{
-            content:'';
-            position:absolute;
-            inset:0;
-            background:var(--gold);
-
-            transform:scaleY(0);
-            transform-origin:bottom;
-
-            transition:.5s var(--ease);
-            z-index:-1;
+            content:''; position:absolute; inset:0; background:var(--gold);
+            transform:scaleY(0); transform-origin:bottom; transition:.5s var(--ease); z-index:-1;
         }
 
-        .luxury-btn:hover{
-            color:#fff;
-            border-color:var(--gold);
-        }
+        .luxury-btn:hover{ color:#fff; border-color:var(--gold); }
+        .luxury-btn:hover::before{ transform:scaleY(1); }
 
-        .luxury-btn:hover::before{
-            transform:scaleY(1);
-        }
+        .showcase-image{ position:relative; }
+        .showcase-image img{ border-radius:6px; box-shadow:0 40px 80px rgba(0,0,0,0.18); }
+        .gold-border{ position:absolute; inset:-25px; border:1px solid rgba(199,167,104,0.35); z-index:-1; }
 
-        .showcase-image{
-            position:relative;
-        }
+        .about{ padding:140px 8%; background:#0b0b0b; text-align:center; }
+        .about h2{ font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem); margin-bottom:35px; }
+        .about p{ max-width:850px; margin:auto; line-height:2; color:rgba(255,255,255,0.75); font-size:15px; }
 
-        .showcase-image img{
-            border-radius:6px;
-            box-shadow:0 40px 80px rgba(0,0,0,0.18);
-        }
+        footer{ background:#000; padding:80px 5%; text-align:center; border-top:1px solid rgba(255,255,255,0.05); }
+        .footer-logo{ font-family:'Playfair Display',serif; font-size:40px; margin-bottom:15px; color:var(--gold); }
+        .footer-text{ font-size:12px; letter-spacing:4px; text-transform:uppercase; opacity:.5; }
 
-        .gold-border{
-            position:absolute;
-            inset:-25px;
-            border:1px solid rgba(199,167,104,0.35);
-            z-index:-1;
-        }
+        .reveal{ opacity:0; transform:translateY(60px); transition: opacity 1.2s var(--ease), transform 1.2s var(--ease); }
+        .reveal.active{ opacity:1; transform:translateY(0); }
 
-
-        .about{
-            padding:140px 8%;
-            background:#0b0b0b;
-            text-align:center;
-        }
-
-        .about h2{
-            font-family:'Playfair Display',serif;
-            font-size:clamp(2.5rem,5vw,4rem);
-            margin-bottom:35px;
-        }
-
-        .about p{
-            max-width:850px;
-            margin:auto;
-            line-height:2;
-            color:rgba(255,255,255,0.75);
-            font-size:15px;
-        }
-
-    
-        footer{
-            background:#000;
-            padding:80px 5%;
-            text-align:center;
-            border-top:1px solid rgba(255,255,255,0.05);
-        }
-
-        .footer-logo{
-            font-family:'Playfair Display',serif;
-            font-size:40px;
-            margin-bottom:15px;
-            color:var(--gold);
-        }
-
-        .footer-text{
-            font-size:12px;
-            letter-spacing:4px;
-            text-transform:uppercase;
-            opacity:.5;
-        }
-
-      
-        .reveal{
-            opacity:0;
-            transform:translateY(60px);
-            transition:
-                opacity 1.2s var(--ease),
-                transform 1.2s var(--ease);
-        }
-
-        .reveal.active{
-            opacity:1;
-            transform:translateY(0);
-        }
-
-
-        @keyframes fadeIn{
-            from{
-                opacity:0;
-                transform:translateY(20px);
-            }
-            to{
-                opacity:1;
-                transform:translateY(0);
-            }
-        }
-
-        @keyframes scrollLine{
-            0%{
-                transform:translateY(0);
-                opacity:.3;
-            }
-            50%{
-                transform:translateY(10px);
-                opacity:1;
-            }
-            100%{
-                transform:translateY(0);
-                opacity:.3;
-            }
-        }
-
-     
+        @keyframes fadeIn{ from{ opacity:0; transform:translateY(20px); } to{ opacity:1; transform:translateY(0); } }
+        @keyframes scrollLine{ 0%{ transform:translateY(0); opacity:.3; } 50%{ transform:translateY(10px); opacity:1; } 100%{ transform:translateY(0); opacity:.3; } }
 
         @media(max-width:950px){
-
-            .showcase{
-                grid-template-columns:1fr;
-                padding:100px 6%;
-                text-align:center;
-            }
-
-            .section-desc{
-                margin-inline:auto;
-            }
-
-            .showcase-image{
-                margin-top:20px;
-            }
-
-            .gold-border{
-                inset:-12px;
-            }
-
+            .showcase{ grid-template-columns:1fr; padding:100px 6%; text-align:center; }
+            .section-desc{ margin-inline:auto; }
+            .showcase-image{ margin-top:20px; }
+            .gold-border{ inset:-12px; }
         }
-
     </style>
 </head>
 
 <body>
-
-  
     <div id="cursor"></div>
 
-   
     <nav>
-
-        <div class="nav-logo">
-            ALFRÉDS
-        </div>
-
+        <div class="nav-logo">ALFRÉDS</div>
         <div class="nav-links">
-            <a href="#">Collection</a>
+            <a href="#" class="interactive">Collection</a>
         </div>
-
     </nav>
 
- 
     <header class="hero">
-
         <video autoplay muted loop playsinline preload="auto">
             <source src="yep.mp4" type="video/mp4">
         </video>
-
         <div class="hero-overlay"></div>
-
         <div class="hero-content">
-
             <img src="img.png" alt="ALFREDS Logo" class="main-logo">
-
-            <div class="hero-tagline">
-                Luxury Fragrance Collection
-            </div>
-
+            <div class="hero-tagline">Luxury Fragrance Collection</div>
         </div>
-
         <div class="scroll-indicator">
             <span>Discover</span>
             <div class="scroll-line"></div>
         </div>
-
     </header>
 
-  
     <section class="showcase">
-
         <div class="showcase-text reveal">
-
-            <span class="section-subtitle">
-                Signature Collection
-            </span>
-
-            <h2 class="section-title">
-                Urban Dew
-            </h2>
-
+            <span class="section-subtitle">Signature Collection</span>
+            <h2 class="section-title">Urban Dew</h2>
             <p class="section-desc">
                 Crafted with rare aromatic accords and refined elegance, Urban Dew captures the essence of contemporary luxury. Encased in crystal-clear glass and finished with gold detailing, it is a fragrance designed for presence, sophistication, and timeless identity.
             </p>
-
-            <a href="#" class="luxury-btn interactive">
-                Acquire Now
-            </a>
-
+            <a href="#" class="luxury-btn interactive">Acquire Now</a>
         </div>
-
         <div class="showcase-image reveal">
-
             <div class="gold-border"></div>
-
             <img src="yes.png" alt="Urban Dew Perfume Bottle">
-
         </div>
-
     </section>
-
 
     <section class="about">
-
         <div class="reveal">
-
-            <span class="section-subtitle">
-                The House of ALFRÉDS
-            </span>
-
-            <h2>
-                Where Luxury Becomes Identity
-            </h2>
-
+            <span class="section-subtitle">The House of ALFRÉDS</span>
+            <h2>Where Luxury Becomes Identity</h2>
             <p>
-                ALFRÉDS is built upon precision, craftsmanship, and timeless luxury. Every fragrance is designed to leave an unforgettable presence — blending modern sophistication with heritage-inspired elegance. Our philosophy is simple: luxury should not only be worn, it should be experienced.
+                ALFRÉDS is built upon precision, craftsmanship, and timeless luxury. Every fragrance is designed to leave an unforgettable presence — blending modern sophistication with heritage-inspired elegance.
             </p>
-
         </div>
-
     </section>
 
-  
     <footer>
-
-        <div class="footer-logo">
-            A
-        </div>
-
-        <div class="footer-text">
-            © 2026 ALFRÉDS — All Rights Reserved
-        </div>
-
+        <div class="footer-logo">A</div>
+        <div class="footer-text">© 2026 ALFRÉDS — All Rights Reserved</div>
     </footer>
 
     <script>
-
         const cursor = document.getElementById("cursor");
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        let currentX = 0;
-        let currentY = 0;
+        let mouseX = 0, mouseY = 0, currentX = 0, currentY = 0;
 
         document.addEventListener("mousemove",(e)=>{
-
             mouseX = e.clientX;
             mouseY = e.clientY;
-
         });
 
         function animateCursor(){
-
             currentX += (mouseX-currentX)*0.15;
             currentY += (mouseY-currentY)*0.15;
-
             cursor.style.left = currentX + "px";
             cursor.style.top = currentY + "px";
-
             requestAnimationFrame(animateCursor);
-
         }
-
         animateCursor();
 
         const interactive = document.querySelectorAll(".interactive");
-
         interactive.forEach(item=>{
-
             item.addEventListener("mouseenter",()=>{
-
                 cursor.style.width = "60px";
                 cursor.style.height = "60px";
                 cursor.style.background = "transparent";
                 cursor.style.border = "1px solid var(--gold)";
-
             });
-
             item.addEventListener("mouseleave",()=>{
-
                 cursor.style.width = "12px";
                 cursor.style.height = "12px";
                 cursor.style.background = "var(--gold)";
                 cursor.style.border = "none";
-
             });
-
         });
-
 
         const reveals = document.querySelectorAll(".reveal");
-
         const observer = new IntersectionObserver((entries)=>{
-
             entries.forEach(entry=>{
-
                 if(entry.isIntersecting){
-
                     entry.target.classList.add("active");
-
                 }
-
             });
-
-        },{
-            threshold:0.15
-        });
+        },{ threshold:0.15 });
 
         reveals.forEach(el=>observer.observe(el));
-
     </script>
-
 </body>
 </html>
