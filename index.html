@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>ALFRÉDS | Urban Dew</title>
-    <meta name="description" content="Discover Urban Dew by ALFRÉDS. A masterpiece of olfactory art, capturing the unseen essence of high-society elegance with notes of rare botanicals and liquid gold.">
+    <link rel="preload" href="Favicon.ico" as="image">
+    <link rel="preload" href="img.png" as="image">
 
     <link rel="icon" href="Favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="Favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="Favicon.ico">
-    
+
+    <title>ALFRÉDS | Urban Dew</title>
+    <meta name="description" content="Discover Urban Dew by ALFRÉDS. A masterpiece of olfactory art, capturing the unseen essence of high-society elegance.">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
     
     <style>
@@ -22,7 +25,7 @@
             --ease: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* --- GLOBAL RESET --- */
+        /* Speed Fix: Ensure content is visible even if assets take time */
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
 
         body {
@@ -33,7 +36,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- KINETIC CURSOR --- */
         #cursor {
             position: fixed;
             top: 0; left: 0;
@@ -47,7 +49,6 @@
             transition: width 0.3s var(--ease), height 0.3s var(--ease);
         }
 
-        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -66,7 +67,6 @@
             font-weight: 300;
         }
 
-        /* --- HERO SECTION --- */
         .hero {
             position: relative;
             height: 100vh;
@@ -75,6 +75,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            background: #000; /* Fallback background for speed */
         }
 
         .hero-video {
@@ -83,22 +84,13 @@
             width: 100%; height: 100%;
             object-fit: cover;
             z-index: 1;
-            filter: brightness(0.6) contrast(1.1);
-        }
-
-        .hero-vignette {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.8) 100%);
-            z-index: 2;
+            filter: brightness(0.6);
         }
 
         .hero-content {
             position: relative;
             z-index: 3;
             text-align: center;
-            animation: elegantFade 3s var(--ease) forwards;
         }
 
         .main-logo {
@@ -106,10 +98,8 @@
             display: block;
             margin: 0 auto;
             mix-blend-mode: screen; 
-            filter: drop-shadow(0px 10px 30px rgba(0,0,0,0.5)); 
         }
 
-        /* --- SHOWCASE SECTION --- */
         .showcase {
             background-color: var(--cream);
             color: var(--black);
@@ -125,15 +115,7 @@
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-style: italic;
-            font-weight: 400;
-            line-height: 1.1;
             margin-bottom: 30px;
-        }
-
-        .product-image-box {
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
         }
 
         .product-image {
@@ -142,7 +124,6 @@
             display: block;
         }
 
-        /* --- ANIMATIONS --- */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -152,11 +133,6 @@
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        @keyframes elegantFade {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
         }
 
         @media (max-width: 900px) {
@@ -174,10 +150,9 @@
     </nav>
 
     <header class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <video class="hero-video" autoplay muted loop playsinline poster="img.png">
             <source src="yep.mp4" type="video/mp4">
         </video>
-        <div class="hero-vignette"></div>
         
         <div class="hero-content">
             <img src="img.png" alt="ALFRÉDS Logo" class="main-logo">
@@ -187,12 +162,10 @@
     <section class="showcase">
         <div class="showcase-text">
             <h2 class="section-title reveal">Urban Dew</h2>
-            <p class="reveal">
-                A masterpiece of olfactory art. Capturing the unseen essence of high-society elegance. 
-            </p>
+            <p class="reveal">A masterpiece of olfactory art.</p>
         </div>
         
-        <div class="product-image-box reveal">
+        <div class="reveal">
             <img src="yes.png" alt="Urban Dew Perfume" class="product-image">
         </div>
     </section>
@@ -217,6 +190,5 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
-
 </body>
 </html>
