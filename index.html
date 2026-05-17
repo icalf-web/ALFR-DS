@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-   <meta name="description" content="Discover Urban Dew by ALFRÉDS. A masterpiece of olfactory art, capturing the unseen essence of high-society elegance with notes of rare botanicals and liquid gold.">
-    <title>ALFRÉDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ALFRÉDS | Urban Dew</title>
+    
+    <meta name="description" content="Discover Urban Dew by ALFRÉDS. A masterpiece of olfactory art, capturing the unseen essence of high-society elegance with notes of rare botanicals and liquid gold.">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
     
@@ -53,7 +56,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            mix-blend-mode: difference; /* Ensures visibility on light and dark backgrounds */
+            mix-blend-mode: difference;
         }
 
         .nav-brand {
@@ -88,7 +91,7 @@
             object-fit: cover;
             z-index: 1;
             filter: brightness(0.6) contrast(1.1);
-            transform: scale(1.05); /* Avoids edge bleeding */
+            transform: scale(1.05);
         }
 
         .hero-vignette {
@@ -112,8 +115,6 @@
         .main-logo {
             width: clamp(250px, 40vw, 450px);
             margin-bottom: 30px;
-            /* If your img.png has a white background, use mix-blend-mode: multiply. 
-               If it is transparent, drop-shadow is perfect. */
             filter: drop-shadow(0px 10px 30px rgba(0,0,0,0.5)); 
         }
 
@@ -150,7 +151,6 @@
             min-height: 100vh;
         }
 
-        /* Text Side */
         .showcase-text {
             max-width: 500px;
         }
@@ -226,7 +226,7 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.15);
         }
 
-        /* --- ANIMATION CLASSES (Triggered via JS) --- */
+        /* --- ANIMATION CLASSES --- */
         .reveal-up {
             opacity: 0;
             transform: translateY(60px);
@@ -365,14 +365,14 @@
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.15 // Triggers when 15% of the element is visible
+            threshold: 0.15 
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
