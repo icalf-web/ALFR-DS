@@ -2,24 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="img.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Discover Urban Dew by ALFRÉDS. A masterpiece of olfactory art, capturing the unseen essence of high-society elegance with notes of rare botanicals and liquid gold.">
     <title>ALFRÉDS</title>
+    <meta name="description" content="Discover Urban Dew by ALFRÉDS. A masterpiece of olfactory art, capturing the unseen essence of high-society elegance with notes of rare botanicals and liquid gold.">
+
+    <link rel="icon" type="image/png" href="img.png">
+    <link rel="apple-touch-icon" href="img.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --gold: #c5a059;
-            --gold-dark: #a38242;
             --black: #0a0a0a;
             --white: #ffffff;
             --cream: #faf9f5;
             --ease: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* --- GLOBAL & RESET --- */
+        /* --- GLOBAL RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
 
         body {
@@ -30,9 +32,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        ::selection { background: var(--gold); color: var(--white); }
-
-        /* --- KINETIC LUXURY CURSOR --- */
+        /* --- KINETIC CURSOR --- */
         #cursor {
             position: fixed;
             top: 0; left: 0;
@@ -43,7 +43,7 @@
             z-index: 10000;
             mix-blend-mode: difference;
             transform: translate(-50%, -50%);
-            transition: width 0.3s var(--ease), height 0.3s var(--ease), background-color 0.3s;
+            transition: width 0.3s var(--ease), height 0.3s var(--ease);
         }
 
         /* --- NAVIGATION --- */
@@ -63,7 +63,6 @@
             letter-spacing: 12px;
             text-transform: uppercase;
             font-weight: 300;
-            color: var(--white);
         }
 
         .nav-links {
@@ -90,7 +89,6 @@
             object-fit: cover;
             z-index: 1;
             filter: brightness(0.6) contrast(1.1);
-            transform: scale(1.05);
         }
 
         .hero-vignette {
@@ -105,15 +103,15 @@
             position: relative;
             z-index: 3;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             animation: elegantFade 3s var(--ease) forwards;
         }
 
         .main-logo {
             width: clamp(250px, 40vw, 450px);
-            margin-bottom: 30px;
+            display: block;
+            margin: 0 auto;
+            /* Ensures logo transparency works over video */
+            mix-blend-mode: screen; 
             filter: drop-shadow(0px 10px 30px rgba(0,0,0,0.5)); 
         }
 
@@ -126,16 +124,8 @@
             font-size: 9px;
             letter-spacing: 6px;
             text-transform: uppercase;
-            color: var(--white);
             opacity: 0.6;
             animation: pulse 2s infinite;
-        }
-
-        .scroll-line {
-            width: 1px;
-            height: 40px;
-            background: var(--gold);
-            margin: 10px auto 0;
         }
 
         /* --- SHOWCASE SECTION --- */
@@ -148,10 +138,6 @@
             align-items: center;
             gap: 10%;
             min-height: 100vh;
-        }
-
-        .showcase-text {
-            max-width: 500px;
         }
 
         .section-subtitle {
@@ -170,7 +156,6 @@
             font-weight: 400;
             line-height: 1.1;
             margin-bottom: 30px;
-            color: var(--black);
         }
 
         .section-desc {
@@ -190,52 +175,38 @@
             color: var(--black);
             border: 1px solid var(--black);
             text-decoration: none;
+            transition: all 0.4s var(--ease);
+        }
+
+        .btn-buy:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .product-image-box {
             position: relative;
             overflow: hidden;
-            transition: color 0.4s var(--ease);
-        }
-
-        .btn-buy::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: var(--gold);
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.4s var(--ease);
-            z-index: -1;
-        }
-
-        .showcase-image-container {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
         }
 
         .product-image {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            height: auto;
+            display: block;
+            transition: transform 1.5s var(--ease);
         }
 
-        .reveal-up {
+        /* --- ANIMATIONS --- */
+        .reveal {
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(40px);
             transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
         }
 
-        .reveal-up.active {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        .delay-1 { transition-delay: 0.2s; }
-        .delay-2 { transition-delay: 0.4s; }
 
         @keyframes elegantFade {
             from { opacity: 0; transform: scale(0.95); }
@@ -243,19 +214,13 @@
         }
 
         @keyframes pulse {
-            0% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
-            50% { opacity: 1; transform: translateX(-50%) translateY(5px); }
-            100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 1; transform: translateX(-50%) translateY(10px); }
         }
 
+        /* --- MOBILE --- */
         @media (max-width: 900px) {
-            .showcase {
-                grid-template-columns: 1fr;
-                padding: 10vh 5%;
-                text-align: center;
-            }
-            .showcase-text { margin: 0 auto 50px auto; }
-            .showcase-image-container { height: 60vh; }
+            .showcase { grid-template-columns: 1fr; text-align: center; }
             #cursor { display: none; }
             .nav-links { display: none; }
         }
@@ -280,87 +245,46 @@
             <img src="img.png" alt="ALFREDS Logo" class="main-logo">
         </div>
 
-        <div class="scroll-indicator">
-            Discover
-            <div class="scroll-line"></div>
-        </div>
+        <div class="scroll-indicator">Discover</div>
     </header>
 
     <section class="showcase">
         <div class="showcase-text">
-            <span class="section-subtitle reveal-up">The Signature Blend</span>
-            <h2 class="section-title reveal-up delay-1">Urban Dew</h2>
-            <p class="section-desc reveal-up delay-1">
-                A masterpiece of olfactory art. Encased in exquisite glass, Urban Dew captures the unseen essence of high-society elegance. With notes of rare botanicals and liquid gold, it is not just a fragrance—it is an inheritance.
+            <span class="section-subtitle reveal">Signature Blend</span>
+            <h2 class="section-title reveal">Urban Dew</h2>
+            <p class="section-desc reveal">
+                A masterpiece of olfactory art. Encased in exquisite glass, Urban Dew captures the unseen essence of high-society elegance. 
             </p>
-            <div class="reveal-up delay-2">
-                <a href="#" class="btn-buy interactive-btn">Acquire Now</a>
-            </div>
+            <a href="#" class="btn-buy reveal">Acquire Now</a>
         </div>
         
-        <div class="showcase-image-container reveal-up delay-2">
-            <img src="yes.png" alt="Urban Dew Perfume Bottle" class="product-image">
+        <div class="product-image-box reveal">
+            <img src="yes.png" alt="Urban Dew Perfume" class="product-image">
         </div>
     </section>
 
     <script>
+        // Custom Cursor
         const cursor = document.getElementById('cursor');
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.2;
-            cursorY += (mouseY - cursorY) * 0.2;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
+        let mX = 0, mY = 0, cX = 0, cY = 0;
+        document.addEventListener('mousemove', (e) => { mX = e.clientX; mY = e.clientY; });
+        function animate() {
+            cX += (mX - cX) * 0.15;
+            cY += (mY - cY) * 0.15;
+            cursor.style.left = cX + 'px';
+            cursor.style.top = cY + 'px';
+            requestAnimationFrame(animate);
         }
-        animateCursor();
+        animate();
 
-        const interactives = document.querySelectorAll('.interactive-btn');
-        interactives.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.width = '60px';
-                cursor.style.height = '60px';
-                cursor.style.backgroundColor = 'transparent';
-                cursor.style.border = '1px solid var(--gold)';
-                el.style.color = '#fff';
-                el.style.borderColor = 'var(--gold)';
-            });
-
-            el.addEventListener('mouseleave', () => {
-                cursor.style.width = '12px';
-                cursor.style.height = '12px';
-                cursor.style.backgroundColor = 'var(--gold)';
-                cursor.style.border = 'none';
-                el.style.color = 'var(--black)';
-                el.style.borderColor = 'var(--black)';
-            });
-        });
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15 
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal-up').forEach((el) => {
-            observer.observe(el);
-        });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
+
 </body>
 </html>
