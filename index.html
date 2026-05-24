@@ -21,8 +21,8 @@
     <link rel="shortcut icon" href="Favicon.ico">
     <link rel="apple-touch-icon" href="Favicon.png">
     <link rel="icon" type="image/png" href="Favicon.png?v=2">
-<link rel="shortcut icon" href="Favicon.ico?v=2">
-<link rel="apple-touch-icon" href="Favicon.png?v=2">
+    <link rel="shortcut icon" href="Favicon.ico?v=2">
+    <link rel="apple-touch-icon" href="Favicon.png?v=2">
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 
@@ -141,7 +141,8 @@
         .about p{ max-width:850px; margin:auto; line-height:2; color:rgba(255,255,255,0.75); font-size:15px; }
 
         footer{ background:#000; padding:80px 5%; text-align:center; border-top:1px solid rgba(255,255,255,0.05); }
-        .footer-logo{ font-family:'Playfair Display',serif; font-size:40px; margin-bottom:15px; color:var(--gold); }
+        .footer-logo{ display: flex; justify-content: center; align-items: center; margin-bottom: 25px; }
+        .footer-logo svg{ width: 42px; height: 42px; fill: var(--gold); }
         .footer-text{ font-size:12px; letter-spacing:4px; text-transform:uppercase; opacity:.5; }
 
         .reveal{ opacity:0; transform:translateY(60px); transition: opacity 1.2s var(--ease), transform 1.2s var(--ease); }
@@ -210,7 +211,11 @@
     </section>
 
     <footer>
-        <div class="footer-logo">A</div>
+        <div class="footer-logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,15 L20,85 L28,85 L37,63 L63,63 L72,85 L80,85 Z M49.5,31 L60,57 L40,57 Z" />
+            </svg>
+        </div>
         <div class="footer-text">© 2026 ALFRÉDS — All Rights Reserved</div>
     </footer>
 
