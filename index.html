@@ -145,6 +145,46 @@
         .footer-logo svg{ width: 42px; height: 42px; fill: var(--gold); }
         .footer-text{ font-size:12px; letter-spacing:4px; text-transform:uppercase; opacity:.5; }
 
+        /* Floating Download Button Style */
+        .download-edge-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(10, 10, 10, 0.75);
+            border: 1px solid var(--gold);
+            color: var(--white);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.4s var(--ease);
+        }
+
+        .download-edge-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--gold);
+            transition: transform 0.3s var(--ease);
+        }
+
+        .download-edge-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        .download-edge-btn:hover svg {
+            fill: var(--black);
+            transform: translateY(2px);
+        }
+
         .reveal{ opacity:0; transform:translateY(60px); transition: opacity 1.2s var(--ease), transform 1.2s var(--ease); }
         .reveal.active{ opacity:1; transform:translateY(0); }
 
@@ -156,6 +196,7 @@
             .section-desc{ margin-inline:auto; }
             .showcase-image{ margin-top:20px; }
             .gold-border{ inset:-12px; }
+            .download-edge-btn { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 9px; }
         }
     </style>
 </head>
@@ -211,9 +252,21 @@
     </section>
 
     <footer>
+        <div class="footer-logo">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,15 L20,85 L28,85 L37,63 L63,63 L72,85 L80,85 Z M49.5,31 L60,57 L40,57 Z" />
+            </svg>
         </div>
         <div class="footer-text">© 2026 ALFRÉDS — All Rights Reserved</div>
     </footer>
+
+    <!-- Fixed ZIP Download Button at the Edge -->
+    <a href="archive.zip" download class="download-edge-btn interactive">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+        </svg>
+        <span>ZIP File</span>
+    </a>
 
     <script>
         const cursor = document.getElementById("cursor");
