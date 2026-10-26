@@ -45,7 +45,7 @@
             font-family:'Inter',sans-serif;
             overflow-x:hidden;
             -webkit-font-smoothing:antialiased;
-            cursor: none !important; /* Added to ensure the custom cursor is the only one visible */
+            cursor: none !important;
         }
 
         body::-webkit-scrollbar{ width:8px; }
@@ -146,7 +146,7 @@
         .footer-text{ font-size:12px; letter-spacing:4px; text-transform:uppercase; opacity:.5; }
 
         /* Floating Download Button Style */
-        .download-edge-btn {
+        .newzip {
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -167,20 +167,20 @@
             transition: all 0.4s var(--ease);
         }
 
-        .download-edge-btn svg {
+        .newzip svg {
             width: 14px;
             height: 14px;
             fill: var(--gold);
             transition: transform 0.3s var(--ease);
         }
 
-        .download-edge-btn:hover {
+        .newzip:hover {
             background: var(--gold);
             color: var(--black);
             border-color: var(--gold);
         }
 
-        .download-edge-btn:hover svg {
+        .newzip:hover svg {
             fill: var(--black);
             transform: translateY(2px);
         }
@@ -196,7 +196,7 @@
             .section-desc{ margin-inline:auto; }
             .showcase-image{ margin-top:20px; }
             .gold-border{ inset:-12px; }
-            .download-edge-btn { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 9px; }
+            .newzip { bottom: 20px; right: 20px; padding: 10px 16px; font-size: 9px; }
         }
     </style>
 </head>
@@ -207,7 +207,7 @@
     <nav>
         <div class="nav-logo">ALFRÉDS</div>
         <div class="nav-links">
-            <a "#" class="interactive">Collection</a>
+            <a href="#" class="interactive">Collection</a>
         </div>
     </nav>
 
@@ -233,7 +233,7 @@
             <p class="section-desc">
                 Crafted with rare aromatic accords and refined elegance, Urban Dew captures the essence of contemporary luxury. Encased in crystal-clear glass and finished with gold detailing, it is a fragrance designed for presence, sophistication, and timeless identity.
             </p>
-            <a "#" class="luxury-btn interactive">Acquire Now</a>
+            <a href="#" class="luxury-btn interactive">Acquire Now</a>
         </div>
         <div class="showcase-image reveal">
             <div class="gold-border"></div>
@@ -261,7 +261,7 @@
     </footer>
 
     <!-- Fixed Download Button at the Edge -->
-    <a href="catalog.ZIP" download class="newzip">
+    <a href="catalog.zip" download class="newzip interactive">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
         </svg>
